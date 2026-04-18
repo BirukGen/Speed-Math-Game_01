@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Math — Axumit Studios</title>
+    <meta name="description" content="Speed Math: A fast-paced math challenge game by Axumit Studios. Solve problems before time runs out!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Splash -->
+    <div id="splash">
+        <div class="splash-content">
+            <img src="logo.png" alt="Axumit Studios" class="splash-logo" />
+            <h1 class="splash-title">AXUMIT STUDIOS</h1>
+            <p class="splash-subtitle">presents</p>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <div id="menu" class="screen hidden">
+        <div class="container menu-container">
+            <div class="menu-hero">
+                <div class="menu-icon">∑</div>
+                <h1 id="menu-title">Speed Math</h1>
+                <p class="menu-tagline">Solve fast. Think faster.</p>
+            </div>
+            <div class="menu-actions">
+                <button id="startBtn">START GAME</button>
+                <p class="menu-hint">Beat the clock and climb the score</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game -->
+    <div id="gameUI" class="screen hidden">
+        <div class="container game-container">
+
+            <div id="topBar">
+                <div class="stat-chip" id="scoreChip">
+                    <span class="stat-icon">★</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="stat-chip timer-chip" id="timerChip">
+                    <span class="stat-icon">⏱</span>
+                    <span id="timer">5</span>
+                </div>
+            </div>
+
+            <div id="gameCenter">
+                <div id="question">1 + 1</div>
+                <div id="inputDisplay">0</div>
+            </div>
+
+            <div id="keypad">
+                <button>1</button><button>2</button><button>3</button>
+                <button>4</button><button>5</button><button>6</button>
+                <button>7</button><button>8</button><button>9</button>
+                <div class="empty-key"></div><button>0</button><button id="clear">C</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Game Over -->
+    <div id="gameOver" class="screen hidden">
+        <div class="container gameover-container">
+            <div class="gameover-hero">
+                <div class="gameover-icon">🏆</div>
+                <h1>Game Over</h1>
+                <p id="finalScore" class="final-score"></p>
+            </div>
+            <div class="gameover-actions">
+                <button id="restartBtn">PLAY AGAIN</button>
+                <button id="menuBtn" class="btn-secondary">MAIN MENU</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

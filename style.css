@@ -1,0 +1,510 @@
+/* =============================================
+   SPEED MATH — Modern Design System
+   Font: Outfit | Palette: Gold & Dark
+============================================= */
+
+/* ---------- Reset & Base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Dark neutral palette */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --bg-elevated: #1e1e1e;
+    --bg-input: #141414;
+
+    /* Text */
+    --text-primary: #f0ede6;
+    --text-secondary: #a39e93;
+    --text-muted: #5c5850;
+
+    /* Accent — Gold / Amber from the logo */
+    --accent: #e8af30;
+    --accent-light: #f0c45a;
+    --accent-glow: rgba(232, 175, 48, 0.22);
+    --accent-hover: #f0c45a;
+    --accent-dim: #c99520;
+    --accent-dark: rgba(232, 175, 48, 0.10);
+
+    /* Status */
+    --danger: #f87171;
+    --danger-glow: rgba(248, 113, 113, 0.2);
+    --success: #4ade80;
+
+    /* Misc */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
+    --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+body {
+    background: var(--bg-primary);
+    min-height: 100dvh;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Screen wrapper ---------- */
+.screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    max-height: 860px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px;
+}
+
+
+
+/* ==============================================
+   SPLASH SCREEN
+============================================== */
+#splash {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-primary);
+    z-index: 100;
+    animation: splashSequence 3.2s ease forwards;
+}
+
+.splash-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: splashContentIn 0.8s ease 0.2s both;
+}
+
+.splash-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(232, 175, 48, 0.4));
+    animation: logoReveal 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+.splash-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 50%, var(--accent-dim) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUpSoft 0.6s ease 0.6s both;
+}
+
+.splash-subtitle {
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    animation: fadeInUpSoft 0.6s ease 1s both;
+}
+
+@keyframes splashSequence {
+    0%, 78% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@keyframes splashContentIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes logoReveal {
+    from { opacity: 0; transform: scale(0.6); filter: drop-shadow(0 0 0px rgba(232, 175, 48, 0)) brightness(0.5); }
+    to   { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 30px rgba(232, 175, 48, 0.4)) brightness(1); }
+}
+
+@keyframes fadeInUpSoft {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==============================================
+   MENU SCREEN
+============================================== */
+.menu-container {
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    animation: screenFadeIn 0.5s ease;
+}
+
+.menu-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.menu-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+    width: 88px;
+    height: 88px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(145deg, var(--accent) 0%, var(--accent-dim) 100%);
+    color: var(--bg-primary);
+    box-shadow: 0 12px 40px var(--accent-glow);
+    margin-bottom: 8px;
+    animation: floatPulse 3s ease-in-out infinite;
+}
+
+#menu-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.menu-tagline {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-align: center;
+    margin: 0;
+}
+
+.menu-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.menu-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0;
+}
+
+@keyframes floatPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes screenFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==============================================
+   BUTTONS
+============================================== */
+button {
+    font-family: 'Outfit', system-ui, sans-serif;
+    width: 100%;
+    height: 56px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition);
+
+    background: linear-gradient(145deg, var(--accent) 0%, var(--accent-dim) 100%);
+    color: var(--bg-primary);
+    box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px var(--accent-glow);
+    background: linear-gradient(145deg, var(--accent-hover) 0%, var(--accent) 100%);
+}
+
+button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.btn-secondary {
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    box-shadow: none;
+}
+
+.btn-secondary:active {
+    box-shadow: none;
+}
+
+
+/* ==============================================
+   GAME SCREEN
+============================================== */
+.game-container {
+    gap: 0;
+    animation: screenFadeIn 0.35s ease;
+}
+
+/* --- Top Bar --- */
+#topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.stat-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.stat-icon {
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+.timer-chip {
+    transition: all var(--transition);
+}
+
+.timer-chip.danger {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: rgba(248, 113, 113, 0.2);
+    color: var(--danger);
+    animation: timerPulse 0.5s ease infinite;
+}
+
+.timer-chip.danger .stat-icon {
+    color: var(--danger);
+}
+
+@keyframes timerPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* --- Question & Input --- */
+#gameCenter {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+#question {
+    font-size: 2.6rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    transition: all var(--transition);
+}
+
+#question.correct-flash {
+    animation: correctPop 0.35s ease;
+}
+
+@keyframes correctPop {
+    0%   { transform: scale(1); color: var(--text-primary); }
+    40%  { transform: scale(1.1); color: var(--success); }
+    100% { transform: scale(1); color: var(--text-primary); }
+}
+
+#inputDisplay {
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    min-width: 160px;
+    padding: 14px 24px;
+    border-radius: var(--radius-md);
+    background: var(--bg-input);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    transition: border-color var(--transition);
+}
+
+#inputDisplay:focus-within,
+#inputDisplay.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* --- Keypad --- */
+#keypad {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-bottom: 8px;
+}
+
+#keypad button {
+    width: 100%;
+    aspect-ratio: 1.25 / 1;
+    font-size: 1.35rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0;
+
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#keypad button:hover {
+    background: var(--bg-elevated);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+#keypad button:active {
+    transform: translateY(1px) scale(0.96);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    background: var(--bg-secondary);
+}
+
+#keypad #clear {
+    background: rgba(248, 113, 113, 0.1);
+    color: var(--danger);
+    border-color: rgba(248, 113, 113, 0.06);
+}
+
+#keypad #clear:hover {
+    background: rgba(248, 113, 113, 0.18);
+}
+
+#inputDisplay.error-flash {
+    animation: errorPop 0.4s ease;
+}
+
+@keyframes errorPop {
+    0%   { transform: scale(1); color: var(--accent); border-color: rgba(255, 255, 255, 0.06); }
+    15%  { transform: scale(1.05); color: var(--danger); border-color: var(--danger); background: rgba(248, 113, 113, 0.1); }
+    100% { transform: scale(1); color: var(--accent); border-color: rgba(255, 255, 255, 0.06); background: var(--bg-input); }
+}
+
+
+/* ==============================================
+   GAME OVER SCREEN
+============================================== */
+.gameover-container {
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    animation: screenFadeIn 0.5s ease;
+}
+
+.gameover-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.gameover-icon {
+    font-size: 3.5rem;
+    margin-bottom: 4px;
+    animation: floatPulse 2.5s ease-in-out infinite;
+}
+
+.gameover-hero h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.final-score {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-align: center;
+    padding: 10px 28px;
+    border-radius: var(--radius-sm);
+    background: var(--accent-dark);
+    border: 1px solid rgba(232, 175, 48, 0.12);
+    margin: 0;
+}
+
+.gameover-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+
+/* ==============================================
+   RESPONSIVE
+============================================== */
+@media (max-height: 640px) {
+    .splash-logo { width: 72px; height: 72px; }
+    .splash-title { font-size: 1.2rem; }
+    .menu-icon { width: 68px; height: 68px; font-size: 2.6rem; }
+    #menu-title { font-size: 1.8rem; }
+    #question { font-size: 2rem; }
+    #inputDisplay { font-size: 1.6rem; padding: 10px 20px; }
+    #keypad button { font-size: 1.15rem; }
+    #keypad { gap: 8px; }
+    .gameover-icon { font-size: 2.6rem; }
+}
+
+@media (max-height: 500px) {
+    #gameCenter { gap: 10px; }
+    #question { font-size: 1.6rem; }
+    #inputDisplay { font-size: 1.3rem; padding: 8px 16px; }
+    #keypad button { aspect-ratio: 1.6 / 1; font-size: 1rem; }
+}
